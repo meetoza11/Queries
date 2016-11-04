@@ -1,0 +1,13 @@
+
+USE master
+GO
+ALTER DATABASE wellhealth_config
+SET SINGLE_USER
+WITH ROLLBACK IMMEDIATE;
+GO
+ALTER DATABASE wellhealth_config
+SET READ_ONLY
+GO
+ALTER DATABASE wellhealth_config
+SET MULTI_USER;
+GO

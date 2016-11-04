@@ -1,0 +1,22 @@
+New User Setup\Copy Procedures
+
+1. Run scripts in following order to create the initial stored proc. 
+You can change the USE statement at the beginning of each script
+to build the stored procs in whichever server you want them to reside. Building them in the master
+DB is not a good idea. If necessary, create another db in which they will reside.
+	
+	usp_hexadecimal
+	usp_help_revlogin
+	usp_help_revserverrole
+	usp_help_revdbrole
+
+2. Running the scripts in the following order making sure to retain the output.
+
+exec usp_help_revlogin 'username' --can be Windows or SQL based login. Outputs Create User stmt.
+exec usp_help_revserverrole 'username' --Outputs server based role assignments for that user.
+exec usp_help_revdbrole --Outputs DB based role assignments for that user.
+
+3. You can now run the output as individual sql statements. These scripts can also be used to
+copy all credentials to another NEW user login, however you might want to go back to the new user and
+change the password through Management Studio. Also, if you are copying a sql login, remove the 'SID='
+portion of the CREATE USER statement.
