@@ -1,0 +1,22 @@
+USE MASTER
+GO
+
+RESTORE DATABASE Test_Originations_11
+FROM DISK = '\\DENPSPBRSDD01.corpint.net\SQL-RCH\Prod\RCHPWCCRPSQL01F\Test_Originations_11\RCHPWCCRPSQL01F_THIRDPARTY02_Test_Originations_11_20150803_020054.BAK'
+WITH RECOVERY
+       ,MOVE 'test_originations_originations_data_01' TO 'K:\MSSQL\THIRDPARTY02\DATA01\Data\test_originations_originations_data_01.mdf'
+       ,MOVE 'test_originations_originations_log_01' TO 'K:\MSSQL\THIRDPARTY02\TRAN01\Data\test_originations_originations_log_01.ldf' 
+       GO
+
+RESTORE DATABASE testitops_beagle_db
+FROM DISK = '\\DENPSPBRSDD01.corpint.net\SQL-RCH\Prod\RCHPWCCRPSQL01F\testitops_beagle_db\RCHPWCCRPSQL01F_THIRDPARTY02_testitops_beagle_db_20150803_020156.BAK'
+WITH RECOVERY
+       ,MOVE 'testitops_beagle_db' TO 'K:\MSSQL\THIRDPARTY02\DATA01\Data\testitops_beagle_db.mdf'
+       ,MOVE 'testitops_beagle_db_log' TO 'K:\MSSQL\THIRDPARTY02\TRAN01\Data\testitops_beagle_db_log.LDF' 
+       GO
+
+       ALTER AUTHORIZATION ON DATABASE :: Test_Originations_11 TO SA;  
+       ALTER AUTHORIZATION ON DATABASE :: testitops_beagle_db  TO SA;  
+       
+       ALTER DATABASE Test_Originations_11 SET RECOVERY SIMPLE; 
+       ALTER DATABASE testitops_beagle_db  SET RECOVERY SIMPLE;   

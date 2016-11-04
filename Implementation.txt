@@ -1,0 +1,4 @@
+open up cmd as an administrator
+Go to the D:
+GO to the SQLimplementations folder
+type implementationmenu.bat or tab
